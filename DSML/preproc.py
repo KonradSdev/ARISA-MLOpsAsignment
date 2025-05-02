@@ -11,7 +11,6 @@ import pandas as pd
 
 from DSML.config import DATASET, DATASET_TEST, PROCESSED_DATA_DIR, RAW_DATA_DIR,categories_mapping
 
-
 def get_raw_data(dataset:str=DATASET, dataset_test:str=DATASET_TEST)->None:
     api = KaggleApi()
     api.authenticate()
