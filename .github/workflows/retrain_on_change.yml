@@ -25,7 +25,7 @@ jobs:
         run: make requirements
       - name: Create kaggle directory
         env: 
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_API_KEY }}
         run: |
           mkdir -p $HOME/.config
           mkdir -p $HOME/.config/kaggle
