@@ -17,7 +17,7 @@ def get_raw_data(dataset:str=DATASET, dataset_test:str=DATASET_TEST)->None:
     api.authenticate()
 
     download_folder = Path(RAW_DATA_DIR)
-    zip_path = download_folder / "heart-attack.zip"
+    zip_path = download_folder / "heart-attack-risk-analysis.zip"
 
     logger.info(f"RAW_DATA_DIR is: {RAW_DATA_DIR}")
     api.competition_download_files(dataset, path=str(download_folder))
