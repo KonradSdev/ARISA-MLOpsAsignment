@@ -41,7 +41,7 @@ def encode_data(df, mapping_dict):
     Changes categorical values into numeric based on mapping provided in config file.
     """
     for column_name in mapping_dict.keys():
-        df = df[column_name].map(mapping_dict[column_name].values())
+        df = df[column_name].map(mapping_dict[column_name])
     return df
     
 
