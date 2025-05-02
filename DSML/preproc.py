@@ -42,7 +42,6 @@ def encode_data(df, mapping_dict):
         df = df[column_name].map(mapping_dict[column_name])
     return df
     
-
 def preprocess_df(file:str|Path)->str|Path:
     """Preprocess datasets."""
     _, file_name = os.path.split(file)
