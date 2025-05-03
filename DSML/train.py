@@ -18,6 +18,7 @@ from DSML.config import (
     MODELS_DIR,
     PROCESSED_DATA_DIR,
     categorical,
+    columns_to_convert,
     target,
 )
 from DSML.helpers import get_git_commit_hash
@@ -78,7 +79,7 @@ def train_cv(X_train:pd.DataFrame, y_train:pd.DataFrame, categorical_indices:lis
     """Do cross-validated training."""
     params["eval_metric"] = eval_metric
     params["loss_function"] = "Logloss"
-    params["ignored_features"] = [0]  # ignore passengerid
+    params["ignored_features"] = [0]  # ignore Patient_ID
 
     data = Pool(X_train, y_train, cat_features=categorical_indices)
 
@@ -288,6 +289,10 @@ def get_or_create_experiment(experiment_name:str):
 
     return mlflow.create_experiment(experiment_name)
 
+def convert_to_str(df,columns_to_convert):
+    for column in columns_to_convert:
+        df[column] = df[column].astype(str)
+    return df
 
 # def champion_callback(study, frozen_trial):
 #     """
@@ -318,6 +323,7 @@ def get_or_create_experiment(experiment_name:str):
 if __name__=="__main__":
     # for running in workflow in actions again again
     df_train = pd.read_csv(PROCESSED_DATA_DIR / "train.csv")
+    df_train = convert_to_str(df_train,columns_to_convert)
 
     y_train = df_train.pop(target)
     X_train = df_train
