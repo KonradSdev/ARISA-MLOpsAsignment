@@ -323,7 +323,7 @@ def convert_to_str(df,columns_to_convert):
 if __name__=="__main__":
     # for running in workflow in actions again again
     df_train = pd.read_csv(PROCESSED_DATA_DIR / "train.csv")
-    df_train = convert_to_str(df_train,columns_to_convert)
+    #df_train = convert_to_str(df_train,columns_to_convert)
 
     y_train = df_train.pop(target)
     X_train = df_train
