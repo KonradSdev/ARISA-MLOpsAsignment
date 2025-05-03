@@ -51,7 +51,7 @@ def preprocess_df(file:str|Path)->str|Path:
     df_data = replace_whitespace_in_columns(df_data)
 
     # Encode categorical values
-    df_data = encode_data(df_data,categories_mapping)
+    #df_data = encode_data(df_data,categories_mapping)
 
     # Split Blood Pressure values into two columns to have numeric representation of SYS and DIA values
     df_data[["SYS", "DIA"]] = df_data["Blood_Pressure"].str.split('/', expand=True)
