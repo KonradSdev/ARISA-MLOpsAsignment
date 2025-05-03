@@ -10,6 +10,7 @@ on:
       - 'DSML/preproc.py'
       - 'DSML/train.py'
       - 'models/best_params.pkl'  # model should also be retrained after hyperparam tuning is run
+      - 'requirements.txt' # retrain model whenever libraries are updated (to fix conflicts)
 
 jobs:
   preprocess:
