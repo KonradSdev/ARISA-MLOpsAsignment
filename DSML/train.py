@@ -160,7 +160,7 @@ def train(X_train:pd.DataFrame, y_train:pd.DataFrame, categorical_indices:list[i
             ytitle="Performance Score",
             yaxis_range=[0.5, 1.0],
         )
-        #mlflow.log_figure(fig1, "test-F1-mean_vs_iterations.png")
+        mlflow.log_figure(fig1, "test-F1-mean_vs_iterations.png")
         fig2 = plot_error_scatter(
             cv_results,
             x="iterations",
@@ -171,7 +171,7 @@ def train(X_train:pd.DataFrame, y_train:pd.DataFrame, categorical_indices:list[i
             xtitle="Training Steps",
             ytitle="Logloss",
         )
-        #mlflow.log_figure(fig2, "test-logloss-mean_vs_iterations.png")
+        mlflow.log_figure(fig2, "test-logloss-mean_vs_iterations.png")
         
         """----------NannyML----------"""
         # Model monitoring initialization
@@ -264,7 +264,7 @@ def plot_error_scatter(  # noqa: PLR0913
         )
 
     fig.show()
-    fig.write_image(FIGURES_DIR / f"{y}_vs_{x}.png")
+    #fig.write_image(FIGURES_DIR / f"{y}_vs_{x}.png")
     return fig
 
 
