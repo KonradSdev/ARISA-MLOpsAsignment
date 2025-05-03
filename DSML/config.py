@@ -74,27 +74,8 @@ categories_mapping = {
     }
 
 categorical = [
-                "Age",
                 "Sex",
-                "Cholesterol",
-                "Blood_Pressure",
-                "Heart_Rate",
-                "Diabetes",
-                "Family_History",
-                "Smoking",
-                "Obesity",
-                "Alcohol_Consumption",
-                "Exercise_Hours_Per_Week",
                 "Diet",
-                "Previous_Heart_Problems",
-                "Medication_Use",
-                "Stress_Level",
-                "Sedentary_Hours_Per_Day",
-                "Income",
-                "BMI",
-                "Triglycerides",
-                "Physical_Activity_Days_Per_Week",
-                "Sleep_Hours_Per_Day",
                 "Country",
                 "Continent",
                 "Hemisphere"
