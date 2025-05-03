@@ -100,4 +100,11 @@ categorical = [
                 "Hemisphere"
                 ]
 
+columns_to_convert = [
+        "Exercise_Hours_Per_Week",
+        "Sedentary_Hours_Per_Day",
+        "Income",
+        "BMI"
+        ]
+
 target = "Heart_Attack_Risk"
