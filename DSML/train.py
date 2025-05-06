@@ -184,7 +184,7 @@ def train(X_train:pd.DataFrame, y_train:pd.DataFrame, categorical_indices:list[i
 
         # univariate drift for features
         udc = nml.UnivariateDriftCalculator(
-            column_names=X_train.drop("Patient_ID", axis=1).columns,
+            column_names=X_train.columns,
             chunk_size=chunk_size,
         )
         udc.fit(reference_df.drop(columns=["prediction", target, "predicted_probability"]))
