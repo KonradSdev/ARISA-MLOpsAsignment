@@ -25,7 +25,7 @@ clean:
 ## Lint using flake8 and black (use `make format` to do formatting)
 .PHONY: lint
 lint:
-	flake8 ARISA_DSML
+	flake8 DSML
 
 all:
 	requirements clean lint
