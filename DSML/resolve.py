@@ -1,4 +1,4 @@
-from ARISA_DSML.config import (
+from DSML.config import (
     MODEL_NAME,
 )
 import mlflow
