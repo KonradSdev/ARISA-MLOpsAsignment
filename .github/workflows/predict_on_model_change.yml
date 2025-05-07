@@ -60,13 +60,13 @@ jobs:
         run: make requirements
       - name: Resolve challenge
         env:
-          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+          MLFLOW_TRACKING_URI: postgresql://${{secrets.MLFLOWDBUSERNAME}}:${{secrets.MLFLOWDBPASS}}@${{secrets.MLFLOWDBENDPOINT}}:${{secrets.MLFLOWDBPORT}}/${{secrets.MLFLOWDB}}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: make resolve
       - name: Predict on test data
         env:
-          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+          MLFLOW_TRACKING_URI: postgresql://${{secrets.MLFLOWDBUSERNAME}}:${{secrets.MLFLOWDBPASS}}@${{secrets.MLFLOWDBENDPOINT}}:${{secrets.MLFLOWDBPORT}}/${{secrets.MLFLOWDB}}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: make predict
