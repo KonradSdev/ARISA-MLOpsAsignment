@@ -9,7 +9,7 @@ import os
 load_dotenv()
 
 # Paths
-ARTIFACT_BUCKET = f"s3://{os.environ.get('ARTIFACT_BUCKET')}"
+ARTIFACT_BUCKET = f"s3://{os.environ.get('ARTIFACT_BUCKET')}/models"
 PROJ_ROOT = Path(__file__).resolve().parents[1]
 logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
 
@@ -22,7 +22,7 @@ INTERIM_DATA_DIR = DATA_DIR / "interim"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 EXTERNAL_DATA_DIR = DATA_DIR / "external"
 
-MODELS_DIR = ARTIFACT_BUCKET / "models"
+MODELS_DIR = ARTIFACT_BUCKET
 
 REPORTS_DIR = PROJ_ROOT / "reports"
 FIGURES_DIR = REPORTS_DIR / "figures"
