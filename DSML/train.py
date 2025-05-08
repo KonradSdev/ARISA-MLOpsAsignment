@@ -14,6 +14,7 @@ from sklearn.model_selection import train_test_split
 
 from DSML.config import (
     FIGURES_DIR,
+    ARTIFACT_BUCKET,
     MODEL_NAME,
     MODELS_DIR,
     PROCESSED_DATA_DIR,
@@ -287,7 +288,7 @@ def get_or_create_experiment(experiment_name:str):
     if experiment := mlflow.get_experiment_by_name(experiment_name):
         return experiment.experiment_id
 
-    return mlflow.create_experiment(experiment_name)
+    return mlflow.create_experiment(experiment_name,ARTIFACT_BUCKET)
 
 def convert_to_str(df,columns_to_convert):
     for column in columns_to_convert:
