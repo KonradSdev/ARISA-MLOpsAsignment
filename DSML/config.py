@@ -3,11 +3,13 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from loguru import logger
+import os
 
 # Load environment variables from .env file if it exists
 load_dotenv()
 
 # Paths
+ARTIFACT_BUCKET = os.environ.get('ARTIFACT_BUCKET')
 PROJ_ROOT = Path(__file__).resolve().parents[1]
 logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
 
@@ -20,7 +22,7 @@ INTERIM_DATA_DIR = DATA_DIR / "interim"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 EXTERNAL_DATA_DIR = DATA_DIR / "external"
 
-MODELS_DIR = PROJ_ROOT / "models"
+MODELS_DIR = f"s3://{ARTIFACT_BUCKET}/models"
 
 REPORTS_DIR = PROJ_ROOT / "reports"
 FIGURES_DIR = REPORTS_DIR / "figures"
