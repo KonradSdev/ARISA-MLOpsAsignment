@@ -4,9 +4,8 @@ on:
   workflow_dispatch
  
 jobs:
-  mlflow:
+  prepare:
     runs-on: ubuntu-latest
-    needs: preprocess
     permissions:
       contents: write  # This gives the token write access to the repository contents
       actions: write   # ✅ Allows triggering other workflows!
