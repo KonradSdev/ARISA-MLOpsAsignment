@@ -14,7 +14,6 @@ from sklearn.model_selection import train_test_split
 
 from DSML.config import (
     FIGURES_DIR,
-    ARTIFACT_BUCKET,
     MODEL_NAME,
     MODELS_DIR,
     PROCESSED_DATA_DIR,
