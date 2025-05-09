@@ -1,0 +1,29 @@
+name: Check mlflow
+
+on: 
+  workflow_dispatch
+ 
+jobs:
+  mlflow:
+    runs-on: ubuntu-latest
+    needs: preprocess
+    permissions:
+      contents: write  # This gives the token write access to the repository contents
+      actions: write   # ✅ Allows triggering other workflows!
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Download processed data
+        uses: actions/download-artifact@v4
+        with:
+          name: processed-data
+          path: data/processed
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with: 
+          python-version: "3.11"
+      - name: Install dependencies
+        run: make requirements
+      - name: Setup MlFlow
+        run: |
+          mlflow server --backend-store-uri postgresql://${{secrets.MLFLOWDBUSERNAME}}:${{secrets.MLFLOWDBPASS}}@${{secrets.MLFLOWDBENDPOINT}}:${{secrets.MLFLOWDBPORT}}/${{secrets.MLFLOWDB}} --default-artifact-root s3://${{secrets.ARTIFACT_BUCKET}}/models --host 0.0.0.0 --port 5000  
