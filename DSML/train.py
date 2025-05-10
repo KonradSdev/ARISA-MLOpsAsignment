@@ -287,7 +287,7 @@ def get_or_create_experiment(experiment_name:str):
     if experiment := mlflow.get_experiment_by_name(experiment_name):
         return experiment.experiment_id
 
-    return mlflow.create_experiment(experiment_name)
+    return mlflow.create_experiment(experiment_name,"s3://mlops-arisa-mlflow-artifacts/models")
 
 def convert_to_str(df,columns_to_convert):
     for column in columns_to_convert:
