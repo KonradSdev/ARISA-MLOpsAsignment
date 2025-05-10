@@ -65,6 +65,7 @@ jobs:
           MLFLOW_TRACKING_URI: postgresql://${{secrets.MLFLOWDBUSERNAME}}:${{secrets.MLFLOWDBPASS}}@${{secrets.MLFLOWDBENDPOINT}}:${{secrets.MLFLOWDBPORT}}/${{secrets.MLFLOWDB}}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          MLFLOW_S3_ENDPOINT_URL: s3://${{secrets.ARTIFACT_BUCKET}}/models
         run: make train
 
       - name: Upload trained model
