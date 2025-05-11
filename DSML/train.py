@@ -261,8 +261,8 @@ def plot_error_scatter(  # noqa: PLR0913
             yaxis={"range": yaxis_range},
         )
 
-    fig.show()
-    #fig.write_image(FIGURES_DIR / f"{y}_vs_{x}.png")
+    FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+    fig.write_image(FIGURES_DIR / f"{y}_vs_{x}.png")
     return fig
 
 
