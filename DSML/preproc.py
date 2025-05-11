@@ -57,7 +57,7 @@ def preprocess_df(file:str|Path)->str|Path:
     df_data[["SYS", "DIA"]] = df_data["Blood_Pressure"].str.split('/', expand=True)
 
     # Drop obsolete columns
-    df_data = df_data.drop(columns=["Patient_ID","Blood_Pressure"], axis=1)
+    df_data = df_data.drop(columns=["Blood_Pressure"], axis=1)
 
     PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)
     outfile_path = PROCESSED_DATA_DIR / file_name
