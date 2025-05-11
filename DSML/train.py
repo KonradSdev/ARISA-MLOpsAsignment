@@ -130,7 +130,7 @@ def train(X_train:pd.DataFrame, y_train:pd.DataFrame, categorical_indices:list[i
 
         model_path = MODELS_DIR / f"{artifact_name}.cbm"
         model.save_model(model_path)
-        mlflow.log_artifact(model_path)
+        mlflow.log_artifact(model_path,artifact_path=f"s3://mlops-arisa-mlflow-artifacts/models/{artifact_name}.cbm")
         cv_metric_mean = cv_results["test-F1-mean"].mean()
         mlflow.log_metric("f1_cv_mean", cv_metric_mean)
 
@@ -204,11 +204,9 @@ def train(X_train:pd.DataFrame, y_train:pd.DataFrame, categorical_indices:list[i
         store.store(udc, filename="udc.pkl")
         store.store(estimator, filename="estimator.pkl")
         
-        mlflow.log_artifact(MODELS_DIR / "udc.pkl")
-        mlflow.log_artifact(MODELS_DIR / "estimator.pkl")
+        mlflow.log_artifact(MODELS_DIR / "udc.pkl",artifact_path=f"s3://mlops-arisa-mlflow-artifacts/models/udc.pkl")
+        mlflow.log_artifact(MODELS_DIR / "estimator.pkl",artifact_path=f"s3://mlops-arisa-mlflow-artifacts/models/estimator.pkl")
         
-
-
     return (model_path, model_params_path)
 
 
