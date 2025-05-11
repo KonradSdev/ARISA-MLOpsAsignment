@@ -21,6 +21,7 @@ def plot_shap(model:CatBoostClassifier, df_plot:pd.DataFrame)->None:
     shap_values = explainer.shap_values(df_plot)
 
     shap.summary_plot(shap_values, df_plot, show=False)
+    FIGURES_DIR.mkdir(parents=True, exist_ok=True)
     plt.savefig(FIGURES_DIR / "test_shap_overall.png")
 
 
