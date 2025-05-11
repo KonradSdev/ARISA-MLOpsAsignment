@@ -75,6 +75,7 @@ categories_mapping = {
     }
 
 categorical = [
+                "Patient_ID",
                 "Sex",
                 "Diet",
                 "Country",
