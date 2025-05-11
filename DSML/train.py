@@ -130,7 +130,7 @@ def train(X_train:pd.DataFrame, y_train:pd.DataFrame, categorical_indices:list[i
 
         model_path = MODELS_DIR / f"{artifact_name}.cbm"
         model.save_model(model_path)
-        mlflow.log_artifact(model_path,artifact_path=f"s3://mlops-arisa-mlflow-artifacts/models/{artifact_name}.cbm")
+        mlflow.log_artifact(artifact_path=f"s3://mlops-arisa-mlflow-artifacts/models/{artifact_name}.cbm")
         cv_metric_mean = cv_results["test-F1-mean"].mean()
         mlflow.log_metric("f1_cv_mean", cv_metric_mean)
 
