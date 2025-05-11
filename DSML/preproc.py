@@ -42,7 +42,7 @@ def encode_data(df, mapping_dict):
         df[column_name] = df[column_name].map(mapping_dict[column_name])
     return df
     
-def preprocess_df(file:str|Path)->str|Path:
+def preprocess_df(file:str|Path, columns_to_drop:list)->str|Path:
     """Preprocess datasets."""
     _, file_name = os.path.split(file)
     df_data = pd.read_csv(file)
@@ -57,7 +57,7 @@ def preprocess_df(file:str|Path)->str|Path:
     df_data[["SYS", "DIA"]] = df_data["Blood_Pressure"].str.split('/', expand=True)
 
     # Drop obsolete columns
-    df_data = df_data.drop(columns=["Blood_Pressure"], axis=1)
+    df_data = df_data.drop(columns=columns_to_drop, axis=1)
 
     PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)
     outfile_path = PROCESSED_DATA_DIR / file_name
@@ -73,6 +73,6 @@ if __name__=="__main__":
 
     # preprocess both sets
     logger.info("preprocessing train.csv")
-    preprocess_df(RAW_DATA_DIR / "train.csv")
+    preprocess_df(RAW_DATA_DIR / "train.csv",["Blood_Pressure"])
     logger.info("preprocessing test.csv")
-    preprocess_df(RAW_DATA_DIR / "test.csv")
+    preprocess_df(RAW_DATA_DIR / "test.csv",["Blood_Pressure"])
