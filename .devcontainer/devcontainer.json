@@ -40,7 +40,8 @@
 	"portsAttributes": {
 		"5000": {
 			"label": "MLflow UI",
-			"onAutoForward": "openBrowser"
+			"onAutoForward": "openBrowser",
+			"visibility": "public"
 		}
 	},
 
