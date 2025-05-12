@@ -8,7 +8,13 @@ from kaggle.api.kaggle_api_extended import KaggleApi
 from loguru import logger
 import pandas as pd
 
-from DSML.config import DATASET, DATASET_TEST, PROCESSED_DATA_DIR, RAW_DATA_DIR,categories_mapping
+from DSML.config import (
+    DATASET,
+    DATASET_TEST,
+    PROCESSED_DATA_DIR,
+    RAW_DATA_DIR,
+    categories_mapping
+    )
 
 def get_raw_data(dataset:str=DATASET, dataset_test:str=DATASET_TEST)->None:
     api = KaggleApi()
@@ -51,7 +57,7 @@ def preprocess_df(file:str|Path, columns_to_drop:list)->str|Path:
     df_data = replace_whitespace_in_columns(df_data)
 
     # Encode categorical values
-    #df_data = encode_data(df_data,categories_mapping)
+    #df_data = encode_data(df_data,categories_mapping) - commented out but might be useful for other datasets
 
     # Split Blood Pressure values into two columns to have numeric representation of SYS and DIA values
     df_data[["SYS", "DIA"]] = df_data["Blood_Pressure"].str.split('/', expand=True)
