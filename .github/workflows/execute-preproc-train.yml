@@ -13,7 +13,7 @@ on:
       - 'models/best_params.pkl'  # model should also be retrained after hyperparam tuning is run
       - 'requirements.txt' # retrain model whenever libraries are updated (to fix conflicts)
 
-  workflow_dispatch #Allow to execute the pipeline manually
+  workflow_dispatch: #Allow to execute the pipeline manually
  
 jobs:
   preprocess:
