@@ -97,6 +97,6 @@ if __name__=="__main__":
                 mlflow.log_figure(fig2, f"univariate_drift_{p}.png")
                 fig3 = univariate_drift.filter(period="analysis", column_names=[p]).plot(kind='distribution')
                 mlflow.log_figure(fig3, f"univariate_drift_dist_{p}.png")
-            except KeyError:
+            except BaseException:
                 logger.info("failed to plot some univariate drift analyses!")
         mlflow.log_params({"git_hash": git_hash})
