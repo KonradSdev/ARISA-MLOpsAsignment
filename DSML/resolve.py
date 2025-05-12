@@ -12,8 +12,9 @@ def get_model_by_alias(client, model_name:str=MODEL_NAME, alias:str="champion"):
     except Exception as e:
         if f"alias {alias} not found" in str(e):
             return None
-        raise(e)
+        raise (e)
     return alias_mv
+
 
 if __name__=="__main__":
     client = MlflowClient(mlflow.get_tracking_uri())

@@ -18,7 +18,6 @@ from DSML.config import (
     MODELS_DIR,
     PROCESSED_DATA_DIR,
     categorical,
-    columns_to_convert,
     target,
 )
 from DSML.helpers import get_git_commit_hash
@@ -172,14 +171,13 @@ def train(X_train:pd.DataFrame, y_train:pd.DataFrame, categorical_indices:list[i
             ytitle="Logloss",
         )
         mlflow.log_figure(fig2, "test-logloss-mean_vs_iterations.png")
-        
+
         """----------NannyML----------"""
         # Model monitoring initialization
         reference_df = X_train.copy()
         reference_df["prediction"] = model.predict(X_train)
         reference_df["predicted_probability"] = [p[1] for p in model.predict_proba(X_train)]
         reference_df[target] = y_train
-        col_names = reference_df.drop(columns=["prediction", target, "predicted_probability"]).columns
         chunk_size = 50
 
         # univariate drift for features
@@ -203,10 +201,10 @@ def train(X_train:pd.DataFrame, y_train:pd.DataFrame, categorical_indices:list[i
         store = nml.io.store.FilesystemStore(root_path=str(MODELS_DIR))
         store.store(udc, filename="udc.pkl")
         store.store(estimator, filename="estimator.pkl")
-        
+
         mlflow.log_artifact(MODELS_DIR / "udc.pkl")
         mlflow.log_artifact(MODELS_DIR / "estimator.pkl")
-        
+
     return (model_path, model_params_path)
 
 
@@ -287,15 +285,10 @@ def get_or_create_experiment(experiment_name:str):
 
     return mlflow.create_experiment(experiment_name)
 
-def convert_to_str(df,columns_to_convert):
-    for column in columns_to_convert:
-        df[column] = df[column].astype(str)
-    return df
 
 if __name__=="__main__":
     # for running in workflow in actions again again
     df_train = pd.read_csv(PROCESSED_DATA_DIR / "train.csv")
-    #df_train = convert_to_str(df_train,columns_to_convert)
 
     y_train = df_train.pop(target)
     X_train = df_train

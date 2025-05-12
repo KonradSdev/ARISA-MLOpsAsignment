@@ -55,7 +55,7 @@ jobs:
 
       - name: Get predictions start date and time # Get the timestamp of predictions start timestamp to use save predictions in appropriate S3 path
         id: predictions_timestamp
-        run: echo "::set-output name=predictions_timestamp::$(date +'%Y-%m-%d')"
+        run: echo "::set-output name=predictions_timestamp::$(date +'%Y%m%d%H%M%S')"
 
       - name: Download processed data # Get data preprocessed in previous job to use in predictions
         uses: actions/download-artifact@v4

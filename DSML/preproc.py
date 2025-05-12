@@ -1,7 +1,6 @@
 """Functions for preprocessing the data."""
 import os
 from pathlib import Path
-import re
 import zipfile
 
 from kaggle.api.kaggle_api_extended import KaggleApi
@@ -13,8 +12,8 @@ from DSML.config import (
     DATASET_TEST,
     PROCESSED_DATA_DIR,
     RAW_DATA_DIR,
-    categories_mapping
-    )
+)
+
 
 def get_raw_data(dataset:str=DATASET, dataset_test:str=DATASET_TEST)->None:
     api = KaggleApi()
@@ -32,13 +31,15 @@ def get_raw_data(dataset:str=DATASET, dataset_test:str=DATASET_TEST)->None:
 
     Path.unlink(zip_path)
 
+
 def replace_whitespace_in_columns(df):
-  """
-  Replaces whitespace characters in DataFrame column names with underscores.
-  """
-  new_columns = [col.replace(" ", "_") for col in df.columns]
-  df.columns = new_columns
-  return df
+    """
+    Replaces whitespace characters in DataFrame column names with underscores.
+    """
+    new_columns = [col.replace(" ", "_") for col in df.columns]
+    df.columns = new_columns
+    return df
+
 
 def encode_data(df, mapping_dict):
     """
@@ -47,7 +48,8 @@ def encode_data(df, mapping_dict):
     for column_name in mapping_dict.keys():
         df[column_name] = df[column_name].map(mapping_dict[column_name])
     return df
-    
+
+
 def preprocess_df(file:str|Path, columns_to_drop:list)->str|Path:
     """Preprocess datasets."""
     _, file_name = os.path.split(file)
@@ -57,7 +59,7 @@ def preprocess_df(file:str|Path, columns_to_drop:list)->str|Path:
     df_data = replace_whitespace_in_columns(df_data)
 
     # Encode categorical values
-    #df_data = encode_data(df_data,categories_mapping) - commented out but might be useful for other datasets
+    # df_data = encode_data(df_data,categories_mapping) - commented out but might be useful for other datasets
 
     # Split Blood Pressure values into two columns to have numeric representation of SYS and DIA values
     df_data[["SYS", "DIA"]] = df_data["Blood_Pressure"].str.split('/', expand=True)
