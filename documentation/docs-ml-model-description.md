@@ -64,24 +64,24 @@ Additionally, `CatBoostClassifier` has very good performance, is robust and easy
 - [Configuration file](..\DSML\config.py)
 
 Before any actions on the dataset could be started there were multiple variables added to the configuration file.
-```
-PROJ_ROOT - root path of the project, used as reference for other paths
-DATASET - name of the dataset used to train the model; competition dataset from Kaggle
-DATASET_TEST - name of the dataset used to test the model and make predictions
-DATA_DIR - path to the folder with data
-RAW_DATA_DIR - path to folder with raw data downloaded from Kaggle
-INTERIM_DATA_DIR - path to temp folder used for interim data storage
-PROCESSED_DATA_DIR - path to folder with processed data
-EXTERNAL_DATA_DIR - path to folder with external data used in the preproc process
-MODELS_DIR - path to the folder with localy stored model files
-REPORTS_DIR - path to the folder with localy stored reports
-FIGURES_DIR - path to the folder with localy stored figures and plots
-MODEL_NAME  - string variable containing name of the model
-categories_mapping - dictionary with mappings used for categorical data encoding - currently out of use
-categorical - list of categorical fields in dataset
-columns_to_convert - list of fields that requires data type change - currently out of use
-target - name of the field used for predictions
-```
+
+- **PROJ_ROOT** - root path of the project, used as reference for other paths
+- **DATASET** - name of the dataset used to train the model; competition dataset from Kaggle
+- **DATASET_TEST** - name of the dataset used to test the model and make predictions
+- **DATA_DIR** - path to the folder with data
+- **RAW_DATA_DIR** - path to folder with raw data downloaded from Kaggle
+- **INTERIM_DATA_DIR** - path to temp folder used for interim data storage
+- **PROCESSED_DATA_DIR** - path to folder with processed data
+- **EXTERNAL_DATA_DIR** - path to folder with external data used in the preproc process
+- **MODELS_DIR** - path to the folder with localy stored model files
+- **REPORTS_DIR** - path to the folder with localy stored reports
+- **FIGURES_DIR**- path to the folder with localy stored figures and plots
+- **MODEL_NAME**  - string variable containing name of the model
+- **categories_mapping** - dictionary with mappings used for categorical data encoding - currently out of use
+- **categorical** - list of categorical fields in dataset
+- **columns_to_convert** - list of fields that requires data type change - currently out of use
+- **target** - name of the field used for predictions
+
 ### Data Preprocessing
 
 Raw dataset requires multiple steps to preprocess data before they will be used in training and predictions.
@@ -115,7 +115,7 @@ Before predictions are being made there is a challenge resolution actions done b
 Resolution is being done by [resolve.py](..\DSML\resolve.py).
 
 Logic of the challenge resolution is as follows.
-![Challenge Resolution](documentation\attachments\challenge.png)
+![Challenge Resolution](attachments\challenge.png)
 
 ### Predictions
 
