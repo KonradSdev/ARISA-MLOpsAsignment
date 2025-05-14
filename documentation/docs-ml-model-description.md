@@ -61,7 +61,7 @@ Additionally, `CatBoostClassifier` has very good performance, is robust and easy
 
 ### Verification of variables used in config.py
 
-- [Configuration file](..\DSML\config.py)
+- [Configuration file](https://github.com/KonradSdev/ARISA-MLOpsAsignment/blob/main/DSML/config.py)
 
 Before any actions on the dataset could be started there were multiple variables added to the configuration file.
 
@@ -85,7 +85,7 @@ Before any actions on the dataset could be started there were multiple variables
 ### Data Preprocessing
 
 Raw dataset requires multiple steps to preprocess data before they will be used in training and predictions.
-Steps done in that process have been listed below. Exact code can be found here: [preproc.py](..\DSML\preproc.py)
+Steps done in that process have been listed below. Exact code can be found here: [preproc.py](https://github.com/KonradSdev/ARISA-MLOpsAsignment/blob/main/DSML/preproc.py)
 
 1. Download dataset from kaggle.com with use of API connection
 1. Replace whitespaces in column names with underscore `_` to avoid data processing errors
@@ -107,7 +107,7 @@ Training has been split in the following steps:
 1. Register new experiment for full dataset training
 1. Train model on full dataset without cross-validation
 
-Exact code can be found here: [train.py](..\DSML\train.py)
+Exact code can be found here: [train.py](https://github.com/KonradSdev/ARISA-MLOpsAsignment/blob/main/DSML/train.py)
 
 ### Resolution of model challenge
 
@@ -134,4 +134,4 @@ Steps executed in the process:
 1. Calculate UDC
 1. Log predictions in as artifact in S3 bucket
 
-Exact code can be found here: [predict.py](..\DSML\predict.py)
+Exact code can be found here: [predict.py](https://github.com/KonradSdev/ARISA-MLOpsAsignment/blob/main/DSML/predict.py)
