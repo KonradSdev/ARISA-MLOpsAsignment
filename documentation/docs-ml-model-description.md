@@ -115,7 +115,7 @@ Before predictions are being made there is a challenge resolution actions done b
 Resolution is being done by [resolve.py](..\DSML\resolve.py).
 
 Logic of the challenge resolution is as follows.
-![Challenge Resolution](attachments\challenge.png)
+![Challenge Resolution](.\attachments\challenge.png)
 
 ### Predictions
 
