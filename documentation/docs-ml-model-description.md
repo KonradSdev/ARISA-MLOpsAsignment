@@ -112,7 +112,7 @@ Exact code can be found here: [train.py](https://github.com/KonradSdev/ARISA-MLO
 ### Resolution of model challenge
 
 Before predictions are being made there is a challenge resolution actions done by the workflow.
-Resolution is being done by [resolve.py](..\DSML\resolve.py).
+Resolution is being done by [resolve.py](https://github.com/KonradSdev/ARISA-MLOpsAsignment/blob/main/DSML/resolve.py).
 
 Logic of the challenge resolution is as follows.
 ![Challenge Resolution](https://github.com/KonradSdev/ARISA-MLOpsAsignment/blob/main/documentation/attachments/challenge.png)
